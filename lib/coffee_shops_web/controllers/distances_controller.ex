@@ -9,7 +9,7 @@ defmodule CoffeeShopsWeb.DistancesController do
     with {:ok, coffee_shops} <- get_closest_coffee_shops(x, y) do
       conn
       |> put_status(200)
-      |> render(:index, %{coffee_shops: coffee_shops})
+      |> render(:index, %{coffee_shops: elem(coffee_shops, 1)})
     else
       {:error, error} -> conn |> put_status(400) |> render(:error, %{error: error})
     end
