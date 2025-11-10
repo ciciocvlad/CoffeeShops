@@ -7,11 +7,12 @@ defmodule CoffeeShopsWeb.Router do
 
   scope "/api", CoffeeShopsWeb do
     pipe_through :api
+
+    post "/distance", DistancesController, :get_closest
   end
 
   # Enable Swoosh mailbox preview in development
   if Application.compile_env(:coffee_shops, :dev_routes) do
-
     scope "/dev" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
